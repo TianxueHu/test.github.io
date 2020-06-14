@@ -11,9 +11,9 @@
 <div id="osmdCanvas"/>
 
 <script>
-  file = "http://localhost:8080/Dichterliebe01.musicxml"
+  var filepath = "/resources/Dichterliebe01.musicxml"
   var openSheetMusicDisplay = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas");
-  openSheetMusicDisplay.load(file).then(
+  openSheetMusicDisplay.load(filepath).then(
     function() {
         openSheetMusicDisplay.render();
     }
