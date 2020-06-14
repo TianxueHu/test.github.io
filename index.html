@@ -1,17 +1,14 @@
 <html>
 <head>
-	<title> OSMD Raw Javascript Usage Example - CORS Version</title>
+	<title> OSMD MusicXML Display</title>
 </head>
 <body>
-
-<!-- You need to set up a local server, see README. Might fail due to CORS restrictions. -->
-<!-- (run http-server ./resources -p 8080 --cors before this) -->
 
 <script src="opensheetmusicdisplay.min.js"></script> <!-- you need to provide the .js file, see README.md-->
 <div id="osmdCanvas"/>
 
 <script>
-  var filepath = "/resources/Dichterliebe01.musicxml"
+  var filepath = "/resources/I_Want_to_Walk_Just_as_Close_as_I_Can.mxl"
   var openSheetMusicDisplay = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas");
   openSheetMusicDisplay.load(filepath).then(
     function() {
