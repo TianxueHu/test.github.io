@@ -86,6 +86,7 @@ textarea {
     width: 600px;
     background-color: skyblue;
     height: 500px;
+    overflow-y: auto;
 }
 .mid-box .mid-top {
     background-color: lightgreen;
