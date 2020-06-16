@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- css and js sourcefile -->
-    <link rel="stylesheet" href="./static/style.css" type="text/css">
-    <script src="./static/myscript.js"></script>
-    <script src="./static/opensheetmusicdisplay.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+    <script src="{{ url_for('static', filename='myscript.js') }}"></script>
 </head>
 
 <body>
@@ -61,38 +60,6 @@
                         <label for="inputfile">Specify a file:</label><br>
                         <input type="file" id="inputfile" name="inputfile">
                         <input class="btn" type="submit" name="submit" value="Upload">
-                        <div id="osmdCanvas"/>
-
-                        <script>
-                            var openSheetMusicDisplay = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas");
-                            function handleFileSelect(evt) {
-                              var file = evt.target.inputfile[0];
-                          
-                              var output = [];
-                              output.push("<li><strong>", escape(file.name), "</strong> </li>");
-                              document.getElementById("list").innerHTML = "<ul>" + output + "</ul>";
-                          
-                              if (!file.name.match('.*\.xml') && !file.name.match('.*\.musicxml') && !file.name.match('.*\.mxl')) {
-                                alert('You selected a non-xml file. Please select only music xml files.');
-                                return;
-                              }
-                          
-                              var reader = new FileReader();
-                              reader.onload = (function(theFile) {
-                              return function(e) {
-                                openSheetMusicDisplay.load(e.target.result).then(
-                                  function() {
-                                    //console.log("e.target.result: " + e.target.result);
-                                    openSheetMusicDisplay.render();
-                                  }
-                                );
-                              }
-                              })(file);
-                              reader.readAsText(file);
-                              }
-                          
-                            document.getElementById("files").addEventListener("change", handleFileSelect, false);
-                          </script>
                     </div>
 
                     <!-- <textarea id="content-target"></textarea>
