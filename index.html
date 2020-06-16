@@ -70,7 +70,9 @@
                 <script src="./static/opensheetmusicdisplay.min.js"></script>
                     <div id="osmdCanvas"/>
 
+                    <label for="inputfile">Specify a file:</label><br>
                     <input type="file" id="files" name="files">
+                    <input class="btn" type="submit" name="submit" value="Upload">
                     <!--<div id="list"></output>-->
 
                     <script>
@@ -84,7 +86,7 @@
                         //output.push("<li><strong>", escape(file.name), "</strong> </li>");
                         //document.getElementById("list").innerHTML = "<ul>" + output + "</ul>";
 
-                        if (!file.name.match('.*\.xml') && !file.name.match('.*\.musicxml') && !file.name.match('.*\.mxl')) {
+                        if (!file.name.match('.*\.xml') && !file.name.match('.*\.musicxml')) {
                         alert('You selected a non-xml file. Please select only music xml files.');
                         return;
                         }
