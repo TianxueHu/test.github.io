@@ -93,7 +93,7 @@ textarea {
 }
 
 .mid-box .mid-bot {
-    background-color: skyblue;
+    background-color: blue;
     height: 400px;
     overflow: scroll;
 }
