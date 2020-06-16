@@ -84,7 +84,7 @@ textarea {
 .mid-box {
     float: left;
     width: 600px;
-    background-color: blue;
+    background-color: skyblue;
     height: 500px;
 }
 .mid-box .mid-top {
@@ -93,7 +93,7 @@ textarea {
 }
 
 .mid-box .mid-bot {
-    background-color: blue;
+    background-color: skyblue;
     height: 400px;
     overflow: scroll;
 }
