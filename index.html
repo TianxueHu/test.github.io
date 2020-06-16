@@ -53,30 +53,19 @@
         <div class="mid-box">
             <div class="mid-top">
                 abc
-            </div>
-            <div class="mid-bot">
                 <form action="/" method="POST" enctype="multipart/form-data">
                     <div>
-                        <!--<label for="inputfile">Specify a file:</label><br>
-                        <input type="file" id="inputfile" name="inputfile">
-                        <input class="btn" type="submit" name="submit" value="Upload">-->
-
-                        
+                    <label for="inputfile">Specify a file:</label><br>
+                    <input type="file" id="files" name="files">
+                    <input class="btn" type="submit" name="submit" value="Upload">
+                    <!--<div id="list"></output>-->
                     </div>
-
-                    <!-- <textarea id="content-target"></textarea>
-                    <input type="button" value="read file" id="read-file" onclick="read()"> -->
                 </form>
+            </div>
+            <div class="mid-bot">
                 <script src="./static/opensheetmusicdisplay.min.js"></script>
                     <div id="osmdCanvas"/>
-                    <form action="/" method="POST" enctype="multipart/form-data">
-                        <div>
-                        <label for="inputfile">Specify a file:</label><br>
-                        <input type="file" id="files" name="files">
-                        <input class="btn" type="submit" name="submit" value="Upload">
-                        <!--<div id="list"></output>-->
-                        </div>
-                    </form>
+                    
 
                     <script>
                     var openSheetMusicDisplay = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas");
