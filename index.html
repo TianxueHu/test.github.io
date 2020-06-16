@@ -73,38 +73,39 @@
         <div class="right-box">
             <script src="./static/opensheetmusicdisplay.min.js"></script>
             <div id="osmdCanvas"/>
+
             <input type="file" id="files" name="files[]" multiple />
             <div id="list"></output>
 
             <script>
-                var openSheetMusicDisplay = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas");
-                function handleFileSelect(evt) {
-                    var file = evt.target.files[0];
-                
-                    var output = [];
-                    output.push("<li><strong>", escape(file.name), "</strong> </li>");
-                    document.getElementById("list").innerHTML = "<ul>" + output + "</ul>";
-                
-                    if (!file.name.match('.*\.xml') && !file.name.match('.*\.musicxml') && !file.name.match('.*\.mxl')) {
-                    alert('You selected a non-xml file. Please select only music xml files.');
-                    return;
+            var openSheetMusicDisplay = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas");
+            function handleFileSelect(evt) {
+                var file = evt.target.files[0];
+
+                var output = [];
+                output.push("<li><strong>", escape(file.name), "</strong> </li>");
+                document.getElementById("list").innerHTML = "<ul>" + output + "</ul>";
+
+                if (!file.name.match('.*\.xml') && !file.name.match('.*\.musicxml')) {
+                alert('You selected a non-xml file. Please select only music xml files.');
+                return;
+                }
+
+                var reader = new FileReader();
+                reader.onload = (function(theFile) {
+                return function(e) {
+                openSheetMusicDisplay.load(e.target.result).then(
+                    function() {
+                    //console.log("e.target.result: " + e.target.result);
+                    openSheetMusicDisplay.render();
                     }
-                
-                    var reader = new FileReader();
-                    reader.onload = (function(theFile) {
-                    return function(e) {
-                    openSheetMusicDisplay.load(e.target.result).then(
-                        function() {
-                        //console.log("e.target.result: " + e.target.result);
-                        openSheetMusicDisplay.render();
-                        }
-                    );
-                    }
-                    })(file);
-                    reader.readAsText(file);
-                    }
-                
-                document.getElementById("files").addEventListener("change", handleFileSelect, false);
+                );
+                }
+                })(file);
+                reader.readAsText(file);
+                }
+
+            document.getElementById("files").addEventListener("change", handleFileSelect, false);
             </script>
         </div>
         <!-- right-box end -->
