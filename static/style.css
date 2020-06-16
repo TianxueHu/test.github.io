@@ -86,12 +86,18 @@ textarea {
     width: 600px;
     background-color: skyblue;
     height: 500px;
-    overflow-y: auto;
 }
 .mid-box .mid-top {
     background-color: lightgreen;
     height: 100px;
 }
+
+.mid-box .mid-bot {
+    background-color: skyblue;
+    height: 400px;
+    overflow: scroll;
+}
+
 .right-box {
     float: left;
     width: 300px;
