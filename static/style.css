@@ -81,12 +81,7 @@ textarea {
     font-size: 18px;
     color: black;
 }
-.mid-box {
-    float: left;
-    width: 600px;
-    background-color: skyblue;
-    height: 500px;
-}
+
 .mid-box .mid-top {
     background-color: lightgreen;
     height: 100px;
