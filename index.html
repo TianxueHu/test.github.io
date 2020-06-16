@@ -57,9 +57,46 @@
             <div class="mid-bot">
                 <form action="/" method="POST" enctype="multipart/form-data">
                     <div>
-                        <label for="inputfile">Specify a file:</label><br>
+                        <!--<label for="inputfile">Specify a file:</label><br>
                         <input type="file" id="inputfile" name="inputfile">
-                        <input class="btn" type="submit" name="submit" value="Upload">
+                        <input class="btn" type="submit" name="submit" value="Upload">-->
+
+                        <script src="./static/opensheetmusicdisplay.min.js"></script>
+                        <div id="osmdCanvas"/>
+
+                        <input type="file" id="files" name="files[]" multiple />
+                        <div id="list"></output>
+
+                        <script>
+                        var openSheetMusicDisplay = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas");
+                        function handleFileSelect(evt) {
+                            var file = evt.target.files[0];
+
+                            var output = [];
+                            output.push("<li><strong>", escape(file.name), "</strong> </li>");
+                            document.getElementById("list").innerHTML = "<ul>" + output + "</ul>";
+
+                            if (!file.name.match('.*\.xml') && !file.name.match('.*\.musicxml')) {
+                            alert('You selected a non-xml file. Please select only music xml files.');
+                            return;
+                            }
+
+                            var reader = new FileReader();
+                            reader.onload = (function(theFile) {
+                            return function(e) {
+                            openSheetMusicDisplay.load(e.target.result).then(
+                                function() {
+                                //console.log("e.target.result: " + e.target.result);
+                                openSheetMusicDisplay.render();
+                                }
+                            );
+                            }
+                            })(file);
+                            reader.readAsText(file);
+                            }
+
+                        document.getElementById("files").addEventListener("change", handleFileSelect, false);
+                        </script>
                     </div>
 
                     <!-- <textarea id="content-target"></textarea>
@@ -71,42 +108,7 @@
         <!-- mid-box end -->
         <!-- right-box start -->
         <div class="right-box">
-            <script src="./static/opensheetmusicdisplay.min.js"></script>
-            <div id="osmdCanvas"/>
-
-            <input type="file" id="files" name="files[]" multiple />
-            <div id="list"></output>
-
-            <script>
-            var openSheetMusicDisplay = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas");
-            function handleFileSelect(evt) {
-                var file = evt.target.files[0];
-
-                var output = [];
-                output.push("<li><strong>", escape(file.name), "</strong> </li>");
-                document.getElementById("list").innerHTML = "<ul>" + output + "</ul>";
-
-                if (!file.name.match('.*\.xml') && !file.name.match('.*\.musicxml')) {
-                alert('You selected a non-xml file. Please select only music xml files.');
-                return;
-                }
-
-                var reader = new FileReader();
-                reader.onload = (function(theFile) {
-                return function(e) {
-                openSheetMusicDisplay.load(e.target.result).then(
-                    function() {
-                    //console.log("e.target.result: " + e.target.result);
-                    openSheetMusicDisplay.render();
-                    }
-                );
-                }
-                })(file);
-                reader.readAsText(file);
-                }
-
-            document.getElementById("files").addEventListener("change", handleFileSelect, false);
-            </script>
+            123
         </div>
         <!-- right-box end -->
     </div>
