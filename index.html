@@ -8,7 +8,6 @@
     <!-- css and js sourcefile -->
     <link rel="stylesheet" href="./static/style.css" type="text/css">
     <script src="./static/myscript.js"></script>
-    <script src="./static/opensheetmusicdisplay.min.js"></script>
 </head>
 
 <body>
@@ -72,6 +71,7 @@
         <!-- mid-box end -->
         <!-- right-box start -->
         <div class="right-box">
+            <script src="./static/opensheetmusicdisplay.min.js"></script>
             <div id="osmdCanvas"/>
             <input type="file" id="files" name="files[]" multiple />
             <div id="list"></output>
@@ -79,7 +79,7 @@
             <script>
                 var openSheetMusicDisplay = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas");
                 function handleFileSelect(evt) {
-                    var file = evt.target.inputfile[0];
+                    var file = evt.target.files[0];
                 
                     var output = [];
                     output.push("<li><strong>", escape(file.name), "</strong> </li>");
@@ -105,7 +105,7 @@
                     }
                 
                 document.getElementById("files").addEventListener("change", handleFileSelect, false);
-                </script>
+            </script>
         </div>
         <!-- right-box end -->
     </div>
