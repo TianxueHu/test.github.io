@@ -53,30 +53,24 @@
         <div class="mid-box">
             <div class="mid-top">
                 abc
+                
+            </div>
+            <div class="mid-bot">
+                <script src="./static/opensheetmusicdisplay.min.js"></script>
                 <form action="/" method="POST" enctype="multipart/form-data">
                     <div>
-                    <label for="inputfile">Specify a file:</label><br>
+                    <label for="inputfile">Please upload and submit a melody file in .xml or .musicxml.:</label><br>
                     <input type="file" id="files" name="files">
                     <input class="btn" type="submit" name="submit" value="Upload">
                     <!--<div id="list"></output>-->
                     </div>
                 </form>
-            </div>
-            <div class="mid-bot">
-                <script src="./static/opensheetmusicdisplay.min.js"></script>
                     <div id="osmdCanvas"/>
-                    
-
                     <script>
                     var openSheetMusicDisplay = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas");
                     function handleFileSelect(evt) {
-                        //var file = evt.target.files[0];
                         var file = evt.target.files[0];
-                        console.log(file);
-
-                        //var output = [];
-                        //output.push("<li><strong>", escape(file.name), "</strong> </li>");
-                        //document.getElementById("list").innerHTML = "<ul>" + output + "</ul>";
+                        //console.log(file);
 
                         if (!file.name.match('.*\.xml') && !file.name.match('.*\.musicxml')) {
                         alert('You selected a non-xml file. Please select only music xml files.');
