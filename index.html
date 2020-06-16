@@ -70,19 +70,21 @@
                 <script src="./static/opensheetmusicdisplay.min.js"></script>
                     <div id="osmdCanvas"/>
 
-                    <input type="file" id="files" name="files[]" multiple />
-                    <div id="list"></output>
+                    <input type="file" id="files" name="files">
+                    <!--<div id="list"></output>-->
 
                     <script>
                     var openSheetMusicDisplay = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas");
                     function handleFileSelect(evt) {
-                        var file = evt.target.files[0];
+                        //var file = evt.target.files[0];
+                        var file = evt.target.files;
+                        console.log(file);
 
-                        var output = [];
-                        output.push("<li><strong>", escape(file.name), "</strong> </li>");
+                        //var output = [];
+                        //output.push("<li><strong>", escape(file.name), "</strong> </li>");
                         document.getElementById("list").innerHTML = "<ul>" + output + "</ul>";
 
-                        if (!file.name.match('.*\.xml') && !file.name.match('.*\.musicxml')) {
+                        if (!file.name.match('.*\.xml') && !file.name.match('.*\.musicxml') && !file.name.match('.*\.mxl')) {
                         alert('You selected a non-xml file. Please select only music xml files.');
                         return;
                         }
