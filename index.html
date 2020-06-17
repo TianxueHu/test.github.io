@@ -59,7 +59,7 @@
                 <script src="./static/opensheetmusicdisplay.min.js"></script>
                 <form action="/" method="POST" enctype="multipart/form-data">
                     <div>
-                    <label for="inputfile">Please upload and submit a melody file in .xml or .musicxml.:</label><br>
+                    <label for="inputfile">Please upload and submit a melody file in .xml or .musicxml:</label><br>
                     <input type="file" id="files" name="files">
                     <input class="btn" type="submit" name="submit" value="Upload">
                     <!--<div id="list"></output>-->
@@ -67,7 +67,10 @@
                 </form>
                     <div id="osmdCanvas"/>
                     <script>
-                    var openSheetMusicDisplay = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas");
+                    var openSheetMusicDisplay = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdCanvas", {
+                        // set options here
+                        backend: "canvas"});
+
                     function handleFileSelect(evt) {
                         var file = evt.target.files[0];
                         //console.log(file);
